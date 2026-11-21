@@ -62,10 +62,13 @@ function writeCache(p: Prices) {
 let inflight: Promise<Prices | null> | null = null;
 function load(): Promise<Prices | null> {
   if (!priceSheet.csvUrl) return Promise.resolve(null);
-  inflight ??= fetch(priceSheet.csvUrl, { cache: 'no-store' })
+  inflight ??= fetch(priceSheet.csvUrl, { cache: 'no-store', credentials: 'omit' })
     .then((r) => (r.ok ? r.text() : Promise.reject(new Error(String(r.status)))))
     .then((text) => {
       const row = parseCsv(text);
+      // Anything that isn't the expected sheet (e.g. a Google sign-in page) counts as a failed
+      // fetch, so visitors keep the last good prices instead of seeing them blanked.
+      if (!('vannamei' in row) || !('tiger' in row)) throw new Error('unexpected sheet format');
       return { vannamei: clean(row.vannamei), tiger: clean(row.tiger), updated: clean(row.updated) };
     })
     .catch(() => null);
