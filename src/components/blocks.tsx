@@ -6,7 +6,8 @@ import { business } from '../content/business';
 import { location, mapLinks } from '../content/location';
 import { caa, caaIsCurrent } from '../content/caa';
 import { products, productOrder } from '../content/products';
-import { published, formatRate, formatDate } from '../content/published';
+import { noPriceText } from '../content/prices';
+import { usePrices } from '../lib/usePrices';
 import { telHref, whatsappHref, defaultWhatsappMessage } from '../lib/links';
 
 export function PageHeader({ eyebrow, title, intro, photo }: { eyebrow: string; title: string; intro?: ReactNode; photo?: { key: string; alt: string } }) {
@@ -39,8 +40,7 @@ export function SectionHeading({ eyebrow, title, children }: { eyebrow?: string;
 }
 
 export function PriceTable() {
-  const updated = formatDate(published.publishedAt);
-  const validFrom = formatDate(published.validFrom);
+  const prices = usePrices();
   return (
     <div>
       <div className="overflow-x-auto border-y border-ocean-deep/80">
@@ -50,15 +50,13 @@ export function PriceTable() {
             <tr className="border-b border-line text-xs uppercase tracking-[0.14em] text-ink-soft">
               <th scope="col" className="py-4 pr-4 font-semibold">Variety</th>
               <th scope="col" className="py-4 pr-4 font-semibold">Specification</th>
-              <th scope="col" className="py-4 pr-4 font-semibold">Rate</th>
-              <th scope="col" className="py-4 font-semibold">Unit</th>
+              <th scope="col" className="py-4 font-semibold">Current rate</th>
             </tr>
           </thead>
           <tbody>
             {productOrder.map((id) => {
               const p = products[id];
-              const price = published.prices[id];
-              const rate = formatRate(price);
+              const rate = prices[id];
               return (
                 <tr key={id} className="border-b border-line last:border-0 align-top">
                   <th scope="row" className="py-5 pr-4">
@@ -69,14 +67,13 @@ export function PriceTable() {
                     {id === 'vannamei' ? 'SPF post-larvae' : 'Post-larvae'}
                     <span className="block text-sm text-ink-soft">Stage / size on enquiry</span>
                   </td>
-                  <td className="py-5 pr-4">
+                  <td className="py-5" aria-live="polite">
                     {rate ? (
                       <span className="font-serif text-2xl font-semibold text-ocean-deep">{rate}</span>
                     ) : (
-                      <span className="font-semibold text-crimson">Contact us for the latest rates</span>
+                      <span className="font-semibold text-crimson">{noPriceText}</span>
                     )}
                   </td>
-                  <td className="py-5 text-[0.98rem]">{rate ? price.unit : '—'}</td>
                 </tr>
               );
             })}
@@ -84,12 +81,17 @@ export function PriceTable() {
         </table>
       </div>
       <div className="mt-4 space-y-1 text-sm text-ink-soft">
-        {updated ? <p>Rates last updated {updated}{validFrom ? `, valid from ${validFrom}` : ''}.</p> : <p>Seed rates change with season and batch. Call or WhatsApp us for today’s rate.</p>}
-        {published.remarks && <p>{published.remarks}</p>}
+        {prices.updated ? <p>Rates last updated {prices.updated}.</p> : <p>Seed rates change with season and batch. Call or WhatsApp us for today’s rate.</p>}
         <p>Rates are indicative and confirmed at the time of booking.</p>
       </div>
     </div>
   );
+}
+
+/** Inline price text for cards and spec lists. */
+export function PriceText({ species, fallback = noPriceText, className = '' }: { species: 'vannamei' | 'tiger'; fallback?: string; className?: string }) {
+  const rate = usePrices()[species];
+  return <span className={className}>{rate ?? fallback}</span>;
 }
 
 export function ContactButtons({ message = defaultWhatsappMessage, light = false }: { message?: string; light?: boolean }) {

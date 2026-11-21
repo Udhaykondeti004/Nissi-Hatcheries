@@ -4,7 +4,7 @@ type Entry = { width: number; height: number; variants: { w: number; src: string
 const images = manifest as Record<string, Entry>;
 
 interface Props {
-  /** Manifest key: a photo file name without extension, or "uploads/<name>". */
+  /** Manifest key: a photo file name (assets-src/photos) without extension. */
   name: string;
   alt: string;
   sizes?: string;

@@ -6,7 +6,6 @@ import { routes, metaFor, seo } from './content/site';
 import { business } from './content/business';
 import { location } from './content/location';
 import { caa } from './content/caa';
-import { published } from './content/published';
 
 export { routes, metaFor, business, seo };
 
@@ -22,16 +21,6 @@ export function render(url: string): string {
 
 /** schema.org LocalBusiness data, built only from verified content. */
 export function structuredData() {
-  const priceSpecs = (['vannamei', 'tiger'] as const)
-    .filter((id) => typeof published.prices[id].rate === 'number')
-    .map((id) => ({
-      '@type': 'Offer',
-      name: id === 'vannamei' ? 'Vannamei shrimp seed' : 'Tiger shrimp seed',
-      price: published.prices[id].rate,
-      priceCurrency: 'INR',
-      description: published.prices[id].unit,
-    }));
-
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -57,6 +46,5 @@ export function structuredData() {
     areaServed: 'Andhra Pradesh, India',
     knowsAbout: ['Litopenaeus vannamei shrimp seed', 'Penaeus monodon shrimp seed', 'Shrimp hatchery', 'Post-larvae'],
     identifier: { '@type': 'PropertyValue', propertyID: 'CAA Registration Number', value: caa.registrationNumber },
-    ...(priceSpecs.length ? { makesOffer: priceSpecs } : {}),
   };
 }

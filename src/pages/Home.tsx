@@ -2,17 +2,15 @@ import { Link } from 'react-router';
 import { ArrowRight, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Img } from '../components/Img';
 import { ShrimpIllustration } from '../components/ShrimpIllustration';
-import { SectionHeading, CaaFacts, MapEmbed, AddressBlock, CtaBand, MoreLink } from '../components/blocks';
+import { SectionHeading, CaaFacts, MapEmbed, AddressBlock, CtaBand, MoreLink, PriceText } from '../components/blocks';
 import { photos } from '../content/media';
 import { business } from '../content/business';
 import { caa } from '../content/caa';
 import { products, productOrder } from '../content/products';
-import { imagesFor, published, formatRate } from '../content/published';
 import { whatsappHref, defaultWhatsappMessage, telHref } from '../lib/links';
 
 export default function Home() {
-  const heroUpload = imagesFor('home')[0];
-  const hero = heroUpload ? { key: heroUpload.key, alt: heroUpload.alt } : photos.hero;
+  const hero = photos.hero;
 
   return (
     <>
@@ -84,16 +82,10 @@ export default function Home() {
           <div className="mt-14 grid gap-px bg-line md:grid-cols-2">
             {productOrder.map((id) => {
               const p = products[id];
-              const upload = imagesFor(id)[0];
-              const rate = formatRate(published.prices[id]);
               return (
                 <article key={id} className="flex flex-col bg-white p-0 md:p-10 md:first:pl-0 md:last:pr-0">
                   <div className="flex aspect-[16/9] items-center justify-center bg-paper">
-                    {upload ? (
-                      <Img name={upload.key} alt={upload.alt} sizes="(min-width: 768px) 50vw, 100vw" className="h-full w-full object-cover" />
-                    ) : (
-                      <ShrimpIllustration species={id} className="w-4/5" />
-                    )}
+                    <ShrimpIllustration species={id} className="w-4/5" />
                   </div>
                   <div className="flex flex-1 flex-col pt-7 pb-12 md:pb-0">
                     <p className="text-sm italic text-ink-soft">{p.scientificName}</p>
@@ -109,7 +101,7 @@ export default function Home() {
                     </ul>
                     <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-8">
                       <MoreLink to={`/shrimp-seed#${id}`}>Seed details</MoreLink>
-                      <span className="text-sm font-semibold text-ink-soft">{rate ? `${rate} ${published.prices[id].unit}` : 'Rate on enquiry'}</span>
+                      <PriceText species={id} fallback="Rate on enquiry" className="text-sm font-semibold text-ink-soft" />
                     </div>
                   </div>
                 </article>

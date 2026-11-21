@@ -1,6 +1,6 @@
 /**
- * Shrimp seed varieties. Prices are NOT kept here: they come from
- * src/data/published.json, which the Google Form publishing script updates.
+ * Shrimp seed varieties. Prices are NOT kept here: they come from the admin's Google Form
+ * (see src/content/prices.ts).
  * Spec values set to null render as "Confirm on enquiry".
  */
 export type SpeciesId = 'vannamei' | 'tiger';

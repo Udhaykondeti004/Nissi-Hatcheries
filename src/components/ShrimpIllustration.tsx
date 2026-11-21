@@ -1,8 +1,8 @@
 import type { SpeciesId } from '../content/products';
 
 /**
- * Fine-line scientific-style shrimp drawing, used until real product photos are
- * published through the Google Form. Tiger variant carries the dark abdominal bands.
+ * Fine-line scientific-style shrimp drawing, used until real seed photographs are added
+ * (put them in assets-src/photos and reference them in src/content/media.ts). Tiger variant carries the dark abdominal bands.
  */
 export function ShrimpIllustration({ species, className = '' }: { species: SpeciesId; className?: string }) {
   const tiger = species === 'tiger';

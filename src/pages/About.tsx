@@ -1,7 +1,6 @@
 import { Img } from '../components/Img';
 import { PageHeader, SectionHeading, CtaBand } from '../components/blocks';
 import { photos } from '../content/media';
-import { imagesFor } from '../content/published';
 
 const steps = [
   {
@@ -37,7 +36,6 @@ const principles = [
 ];
 
 export default function About() {
-  const gallery = imagesFor('gallery');
   return (
     <>
       <PageHeader
@@ -79,12 +77,6 @@ export default function About() {
                   <span className="block font-serif text-lg font-semibold text-ocean-deep">{f.title}</span>
                   <span className="mt-1 block text-[0.98rem] text-ink-soft">{f.text}</span>
                 </figcaption>
-              </figure>
-            ))}
-            {gallery.map((g) => (
-              <figure key={g.key}>
-                <Img name={g.key} alt={g.alt} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" className="aspect-[4/3] w-full object-cover" />
-                <figcaption className="mt-4 text-[0.98rem] text-ink-soft">{g.alt}</figcaption>
               </figure>
             ))}
           </div>

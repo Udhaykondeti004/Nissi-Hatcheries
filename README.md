@@ -11,7 +11,7 @@ Seelamvaripalem, Ponnada Village, U. Kothapalli Mandal, Kakinada District, Andhr
 
 | What | Where | Who changes it |
 |---|---|---|
-| Seed prices, price remarks, new photos | `src/data/published.json` + `public/uploads/` | **The admin, through the Google Form.** The publishing script commits here automatically. See [`apps-script/SETUP.md`](apps-script/SETUP.md). |
+| Vannamei and Tiger seed prices | A Google Form → Google Sheet, published as CSV; link set in `src/content/prices.ts` | **The admin, through the Google Form.** The site reads the sheet live; no redeploy needed. See [`docs/PRICE-FORM-SETUP.md`](docs/PRICE-FORM-SETUP.md). |
 | Business name, phones, WhatsApp number, email | `src/content/business.ts` | Developer (one file) |
 | Address, map pin, landmarks | `src/content/location.ts` | Developer |
 | CAA registration details | `src/content/caa.ts` | Developer |
@@ -35,7 +35,7 @@ Requires Node 22 or newer.
 
 ## How the build works
 
-1. `scripts/optimize-images.mjs` turns `assets-src/photos/*` and `public/uploads/*` into responsive WebP files in `public/img/`, plus a manifest.
+1. `scripts/optimize-images.mjs` turns `assets-src/photos/*` into responsive WebP files in `public/img/`, plus a manifest.
 2. Vite builds the React app (React, TypeScript, Tailwind CSS, lucide-react).
 3. `scripts/prerender.mjs` renders each route to its own HTML file (`about.html`, …) with its own title, description, canonical URL and LocalBusiness JSON-LD, then writes `404.html`, `sitemap.xml` and `robots.txt`.
 

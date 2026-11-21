@@ -1,9 +1,7 @@
 import { MessageCircle } from 'lucide-react';
-import { Img } from '../components/Img';
 import { ShrimpIllustration } from '../components/ShrimpIllustration';
-import { PageHeader, CtaBand, MoreLink } from '../components/blocks';
+import { PageHeader, CtaBand, MoreLink, PriceText } from '../components/blocks';
 import { products, productOrder } from '../content/products';
-import { published, formatRate, imagesFor } from '../content/published';
 import { whatsappHref } from '../lib/links';
 
 const comparison: [string, string, string][] = [
@@ -35,21 +33,14 @@ export default function ShrimpSeed() {
 
       {productOrder.map((id, idx) => {
         const p = products[id];
-        const upload = imagesFor(id)[0];
-        const price = published.prices[id];
-        const rate = formatRate(price);
         return (
           <section key={id} id={id} className={`scroll-mt-24 py-20 md:py-28 ${idx % 2 ? 'border-y border-line bg-white' : ''}`}>
             <div className="container-x grid gap-12 lg:grid-cols-12">
               <div className={`lg:col-span-6 ${idx % 2 ? 'lg:order-2 lg:col-start-7' : ''}`}>
                 <div className="flex aspect-[4/3] items-center justify-center bg-shell">
-                  {upload ? (
-                    <Img name={upload.key} alt={upload.alt} sizes="(min-width: 1024px) 560px, 100vw" className="h-full w-full object-cover" />
-                  ) : (
-                    <ShrimpIllustration species={id} className="w-[85%]" />
-                  )}
+                  <ShrimpIllustration species={id} className="w-[85%]" />
                 </div>
-                {!upload && <p className="mt-3 text-xs text-ink-soft">Illustration. Seed photographs to follow.</p>}
+                <p className="mt-3 text-xs text-ink-soft">Illustration. Seed photographs to follow.</p>
               </div>
 
               <div className={`lg:col-span-5 ${idx % 2 ? 'lg:order-1' : 'lg:col-start-8'}`}>
@@ -71,7 +62,7 @@ export default function ShrimpSeed() {
                   ))}
                   <div className="grid grid-cols-[150px_1fr] gap-4 py-3">
                     <dt className="text-ink-soft">Rate</dt>
-                    <dd className="font-semibold text-ocean-deep">{rate ? `${rate} ${price.unit}` : <span className="text-crimson">Contact us for the latest rate</span>}</dd>
+                    <dd className="font-semibold text-ocean-deep"><PriceText species={id} fallback="Contact us for the latest rate" /></dd>
                   </div>
                 </dl>
 

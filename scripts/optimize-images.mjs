@@ -1,6 +1,5 @@
 // Converts original photos into responsive WebP files and writes a manifest the site reads.
-//   assets-src/photos/*  -> public/img/<name>-<width>.webp   (hatchery photos kept in the repo)
-//   public/uploads/*     -> public/img/uploads/<name>-<width>.webp  (photos published from the Google Form)
+//   assets-src/photos/*  -> public/img/<name>-<width>.webp
 // Runs before every dev start and build, so Cloudflare Pages regenerates everything on deploy.
 import sharp from 'sharp';
 import { readdir, mkdir, writeFile, stat } from 'node:fs/promises';
@@ -13,7 +12,6 @@ const IMG_EXT = /\.(jpe?g|png|webp|avif|tiff?)$/i;
 
 const sources = [
   { dir: path.join(root, 'assets-src/photos'), out: path.join(root, 'public/img'), prefix: '' },
-  { dir: path.join(root, 'public/uploads'), out: path.join(root, 'public/img/uploads'), prefix: 'uploads/' },
 ];
 
 const manifest = {};
