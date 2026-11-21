@@ -3,8 +3,8 @@
 Static website for **Nissi Hatcheries**, a CAA-registered shrimp hatchery (Reg. No. 56-9(179)/2022) at
 Seelamvaripalem, Ponnada Village, U. Kothapalli Mandal, Kakinada District, Andhra Pradesh 533449.
 
-- **Live:** https://nissi-hatcheries.pages.dev
-- **Hosting:** Cloudflare Pages (free plan), connected to this GitHub repo. Every push to `main` rebuilds and redeploys automatically.
+- **Live:** https://nissi-hatcheries.kondetiudhay.workers.dev
+- **Hosting:** Cloudflare (free plan; currently a Workers static-assets project), connected to this GitHub repo. Every push to `main` rebuilds and redeploys automatically.
 - **Running cost:** ₹0. No backend, database, paid API or subscription.
 
 ## How content is managed

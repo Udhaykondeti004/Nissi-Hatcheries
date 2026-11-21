@@ -23,8 +23,8 @@ export const business = {
   /** Business email: not yet provided. Leave null to hide it. */
   email: null as string | null,
 
-  /** Public website address (Cloudflare Pages free subdomain). Update if a custom domain is added. */
-  siteUrl: 'https://nissi-hatcheries.pages.dev',
+  /** Public website address (free Cloudflare subdomain). Update if a custom domain is added. */
+  siteUrl: 'https://nissi-hatcheries.kondetiudhay.workers.dev',
 } as const;
 
 export type Business = typeof business;

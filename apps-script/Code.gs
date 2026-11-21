@@ -16,7 +16,7 @@
  *   GITHUB_REPO     optional  Default "Udhaykondeti004/Nissi-Hatcheries".
  *   GITHUB_BRANCH   optional  Default "main".
  *   NOTIFY_EMAILS   optional  Extra comma-separated emails that receive every publish/reject notice.
- *   SITE_URL        optional  Default "https://nissi-hatcheries.pages.dev".
+ *   SITE_URL        optional  Default "https://nissi-hatcheries.kondetiudhay.workers.dev".
  *
  * Free-tier usage: one submission ≈ 6–10 URL fetches and 1–2 emails
  * (consumer limits: 20,000 fetches/day, 100 emails/day).
@@ -274,7 +274,7 @@ function config_() {
     repo: p.getProperty('GITHUB_REPO') || 'Udhaykondeti004/Nissi-Hatcheries',
     branch: p.getProperty('GITHUB_BRANCH') || 'main',
     notify: (p.getProperty('NOTIFY_EMAILS') || '').split(',').map(function (s) { return s.trim(); }).filter(String),
-    siteUrl: (p.getProperty('SITE_URL') || 'https://nissi-hatcheries.pages.dev').replace(/\/$/, ''),
+    siteUrl: (p.getProperty('SITE_URL') || 'https://nissi-hatcheries.kondetiudhay.workers.dev').replace(/\/$/, ''),
   };
 }
 
