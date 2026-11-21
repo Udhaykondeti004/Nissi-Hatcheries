@@ -3,8 +3,8 @@
 Static website for **Nissi Hatcheries**, a CAA-registered shrimp hatchery (Reg. No. 56-9(179)/2022) at
 Seelamvaripalem, Ponnada Village, U. Kothapalli Mandal, Kakinada District, Andhra Pradesh 533449.
 
-- **Live:** https://nissi-hatcheries.kondetiudhay.workers.dev
-- **Hosting:** Cloudflare Workers static assets (free plan), connected to this GitHub repo. Every push to `main` rebuilds and redeploys automatically.
+- **Live:** https://nissi-hatcheries.pages.dev
+- **Hosting:** Cloudflare Pages (free plan), connected to this GitHub repo. Every push to `main` rebuilds and redeploys automatically.
 - **Running cost:** ₹0. No backend, database, paid API or subscription.
 
 ## How content is managed
@@ -39,16 +39,16 @@ Requires Node 22 or newer.
 2. Vite builds the React app (React, TypeScript, Tailwind CSS, lucide-react).
 3. `scripts/prerender.mjs` renders each route to its own HTML file (`about.html`, …) with its own title, description, canonical URL and LocalBusiness JSON-LD, then writes `404.html`, `sitemap.xml` and `robots.txt`.
 
-## Cloudflare settings (Workers & Pages → nissi-hatcheries → Settings → Build)
+## Cloudflare Pages settings (Workers & Pages → nissi-hatcheries → Settings → Build)
 
 | Setting | Value |
 |---|---|
 | Git repository / branch | `Udhaykondeti004/Nissi-Hatcheries`, `main` |
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` (uploads `dist/` as static files, as set in `wrangler.jsonc`) |
-| Node version | 22 (`.nvmrc`) |
+| Build output directory | `dist` |
+| Environment variable | `NODE_VERSION` = `22` (also in `.nvmrc`) |
 
-`wrangler.jsonc` must stay in the repo. Without it, Wrangler auto-configures the project and breaks the prerender step.
+`wrangler.jsonc` is only used if the site is ever deployed as a Cloudflare Worker instead; Pages ignores it.
 
 ## Brand assets
 
