@@ -31,7 +31,7 @@ export function structuredData() {
     url: business.siteUrl,
     logo: `${business.siteUrl}/icon-512.png`,
     image: `${business.siteUrl}/og-image.jpg`,
-    telephone: business.phones.map((p) => p.e164),
+    telephone: business.phones.length === 1 ? business.phones[0].e164 : business.phones.map((p) => p.e164),
     ...(business.email ? { email: business.email } : {}),
     address: {
       '@type': 'PostalAddress',

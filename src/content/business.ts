@@ -12,14 +12,10 @@ export const business = {
     'CAA-registered shrimp hatchery at Ponnada, U. Kothapalli Mandal, Kakinada District, Andhra Pradesh, producing SPF L. vannamei post-larvae for coastal shrimp farmers.',
 
   phones: [
-    { display: '+91 91335 73777', e164: '+919133573777' },
-    { display: '+91 94902 27133', e164: '+919490227133' },
+    { display: '+91 70137 89979', e164: '+917013789979' },
   ],
-  /**
-   * Number that receives WhatsApp enquiries (digits only, with country code).
-   * TO CONFIRM with the business: defaulted to the first signboard number.
-   */
-  whatsapp: '919133573777',
+  /** Number that receives WhatsApp enquiries (digits only, with country code). Confirmed by the business. */
+  whatsapp: '917013789979',
   /** Business email: not yet provided. Leave null to hide it. */
   email: null as string | null,
 

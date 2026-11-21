@@ -40,7 +40,7 @@ export default function Location() {
       <section className="border-t border-line bg-white py-16 md:py-20">
         <div className="container-x grid gap-8 md:grid-cols-2">
           <figure>
-            <Img name={photos.signboard.key} alt={photos.signboard.alt} sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[3/2] w-full object-cover" />
+            <Img name={photos.signboard.key} alt={photos.signboard.alt} sizes="(min-width: 768px) 50vw, 100vw" className="w-full" />
             <figcaption className="mt-3 text-sm text-ink-soft">Look for the Nissi Hatchery signboard at the entrance.</figcaption>
           </figure>
           <figure>

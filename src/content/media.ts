@@ -11,7 +11,7 @@ export const photos = {
   plSection: { key: 'pl-section-team', alt: 'Hatchery staff at work outside PL Section 1' },
   courtyard: { key: 'hatchery-courtyard', alt: 'Hatchery courtyard with tank sheds, filters and coconut palms' },
   reservoir: { key: 'reservoir-pond', alt: 'Lined seawater reservoir pond within the hatchery boundary' },
-  signboard: { key: 'signboard', alt: 'Nissi Hatchery signboard showing CAA registration and address' },
+  signboard: { key: 'signboard', alt: 'Nissi Hatchery signboard showing the CAA registration number and address' },
   caaListing: { key: 'caa-listing', alt: 'Coastal Aquaculture Authority approved hatchery list showing the Nissi Hatcheries entry' },
 } as const;
 

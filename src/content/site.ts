@@ -54,7 +54,7 @@ export const routes: RouteMeta[] = [
     nav: 'Contact',
     title: 'Contact Nissi Hatcheries | Call or WhatsApp for Shrimp Seed',
     description:
-      'Contact Nissi Hatcheries for vannamei and tiger shrimp seed. Call +91 91335 73777 or +91 94902 27133, or send a WhatsApp enquiry.',
+      'Contact Nissi Hatcheries for vannamei and tiger shrimp seed. Call or WhatsApp +91 70137 89979.',
   },
 ];
 
