@@ -1,0 +1,13 @@
+// Cloudflare Workers static-assets deploy (free plan: static asset requests are free and unlimited).
+// The build command (npm run build) produces dist/; `wrangler deploy` only uploads it. No Worker code runs.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nissi-hatcheries",
+  "compatibility_date": "2026-11-19",
+  "assets": {
+    "directory": "./dist",
+    // /about serves about.html; unknown URLs get dist/404.html with a 404 status.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

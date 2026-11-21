@@ -20,6 +20,7 @@ const verification = seo.googleSiteVerification
 function page(url, meta, { noindex = false } = {}) {
   const canonical = business.siteUrl + (meta.path === '/' ? '/' : meta.path);
   let html = template
+    .replaceAll('__SITE_URL__', business.siteUrl)
     .replace(/<title>.*?<\/title>/s, `<title>${esc(meta.title)}</title>`)
     .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${esc(meta.description)}" />`)
     .replace(/<link rel="canonical"[^>]*>/, noindex ? '<meta name="robots" content="noindex" />' : `<link rel="canonical" href="${canonical}" />`)
