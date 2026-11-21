@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-ssr
+public/img
+src/data/image-manifest.json
+.DS_Store
+*.log
+.env*

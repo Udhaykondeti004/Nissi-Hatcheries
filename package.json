@@ -1,0 +1,36 @@
+{
+  "name": "nissi-hatcheries",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Official website of Nissi Hatcheries, Ponnada, U. Kothapalli Mandal, Kakinada District, Andhra Pradesh",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/optimize-images.mjs && vite",
+    "images": "node scripts/optimize-images.mjs",
+    "build": "node scripts/optimize-images.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview --port 4173",
+    "check-links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/source-sans-3": "^5.3.1",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
+    "lucide-react": "^1.77.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^8.5.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  }
+}
