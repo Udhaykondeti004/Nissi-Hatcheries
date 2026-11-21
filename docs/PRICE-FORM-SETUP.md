@@ -10,6 +10,8 @@ submits. The website shows the new prices within about 5 minutes.
 
 Use a normal Google account, ideally the Nissi Gmail.
 
+> **Shortcut:** steps 1–3 can be done in one go by the script [`create-price-form.gs`](create-price-form.gs). Paste it into <https://script.new>, set your admin code, run `createPriceForm`, then do step 4. The manual steps below need no script and no permission screen.
+
 ---
 
 ## Step 1 – Make the form (3 minutes)
