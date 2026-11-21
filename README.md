@@ -3,8 +3,8 @@
 Static website for **Nissi Hatcheries**, a CAA-registered shrimp hatchery (Reg. No. 56-9(179)/2022) at
 Seelamvaripalem, Ponnada Village, U. Kothapalli Mandal, Kakinada District, Andhra Pradesh 533449.
 
-- **Live:** https://nissi-hatcheries.kondetiudhay.workers.dev
-- **Hosting:** Cloudflare (free plan; currently a Workers static-assets project), connected to this GitHub repo. Every push to `main` rebuilds and redeploys automatically.
+- **Live:** https://nissi-hatcheries.pages.dev
+- **Hosting:** Cloudflare Pages (free plan), project `nissi-hatcheries`. Deploy with `npm run deploy`. Price changes need no deploy: they are read live from the Google Sheet.
 - **Running cost:** ₹0. No backend, database, paid API or subscription.
 
 ## How content is managed
@@ -39,16 +39,16 @@ Requires Node 22 or newer.
 2. Vite builds the React app (React, TypeScript, Tailwind CSS, lucide-react).
 3. `scripts/prerender.mjs` renders each route to its own HTML file (`about.html`, …) with its own title, description, canonical URL and LocalBusiness JSON-LD, then writes `404.html`, `sitemap.xml` and `robots.txt`.
 
-## Cloudflare Pages settings (Workers & Pages → nissi-hatcheries → Settings → Build)
+## Deploying (Cloudflare Pages, direct upload)
 
-| Setting | Value |
-|---|---|
-| Git repository / branch | `Udhaykondeti004/Nissi-Hatcheries`, `main` |
-| Build command | `npm run build` |
-| Build output directory | `dist` |
-| Environment variable | `NODE_VERSION` = `22` (also in `.nvmrc`) |
+```bash
+npx wrangler login     # once per computer: approve in the browser
+npm run deploy         # build + upload dist/ to the nissi-hatcheries Pages project
+```
 
-`wrangler.jsonc` is only used if the site is ever deployed as a Cloudflare Worker instead; Pages ignores it.
+- `wrangler.jsonc` holds the Pages project name and output folder.
+- The project was created as a classic Pages project (`wrangler pages project create … --force`). Don't recreate it from the dashboard's Workers flow: that makes a Worker with a `*.workers.dev` address instead of `nissi-hatcheries.pages.dev`.
+- Pushing to GitHub doesn't deploy by itself. Code changes go live with `npm run deploy`.
 
 ## Brand assets
 

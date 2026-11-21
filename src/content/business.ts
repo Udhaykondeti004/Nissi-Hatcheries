@@ -24,7 +24,7 @@ export const business = {
   email: null as string | null,
 
   /** Public website address (free Cloudflare subdomain). Update if a custom domain is added. */
-  siteUrl: 'https://nissi-hatcheries.kondetiudhay.workers.dev',
+  siteUrl: 'https://nissi-hatcheries.pages.dev',
 } as const;
 
 export type Business = typeof business;
